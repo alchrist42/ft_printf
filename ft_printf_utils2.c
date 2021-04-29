@@ -1,5 +1,12 @@
 #include "ft_printf.h"
 
+/*
+**	@brief	print character n times
+**	
+**	@param	c		character
+**	@param	n		counter to print
+**	@return	int		counter printed characters
+*/
 int	ft_putnchar(char c, int n)
 {
 	int	i;
@@ -13,6 +20,14 @@ int	ft_putnchar(char c, int n)
 	return (i);
 }
 
+/*
+**	@brief	counts lenght integer by its base
+**	
+**	@param	n			integer
+**	@param	b_len		base lenght
+**	@param	flags		pointer to format specificator flags structure
+**	@return	size_t		lenght
+*/
 size_t	ft_lennbr_base(long long n, size_t b_len, t_flag *flags)
 {
 	size_t	lennbr;
@@ -30,6 +45,14 @@ size_t	ft_lennbr_base(long long n, size_t b_len, t_flag *flags)
 	return (lennbr);
 }
 
+/*
+**	@brief	write nbr by any base to standart output
+**	
+**	@param	n		integer
+**	@param	b_len	base len
+**	@param	base	pointer to base string
+**	@return	int		total printed characters
+*/
 int	ft_putnbr_base(unsigned long long n, size_t b_len, char *base)
 {
 	if (n < b_len)
@@ -38,6 +61,13 @@ int	ft_putnbr_base(unsigned long long n, size_t b_len, char *base)
 		+ ft_putnchar(base[n % b_len], 1));
 }
 
+/*
+**	@brief		Inicialize format specificator flags and fill first two
+**	
+**	@param	s			pointer to format specificator string
+**	@param	flags		pointer to format specificator flags structure
+**	@return	const char*	pointer to next args in string
+*/
 const char	*ft_inicialize_flags(const char *s, t_flag *flags)
 {
 	flags->minus = false;
@@ -57,6 +87,13 @@ const char	*ft_inicialize_flags(const char *s, t_flag *flags)
 	return (s);
 }
 
+/*
+**	@brief	Fills format specificator flags
+**	
+**	@param	s		pointer to format specificator string
+**	@param	args	type for getting uncountable args
+**	@param	flags	pointer to format specificator flags structure
+*/
 void	ft_get_flags(const char *s, va_list args, t_flag *flags)
 {
 	s = ft_inicialize_flags(s, flags);

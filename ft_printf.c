@@ -1,5 +1,14 @@
 #include "ft_printf.h"
 
+/*
+**	@brief	selects the format specificator
+**	
+**	@param	s		point to format specificator string
+**	@param	args		type for getting uncountable args
+**	@param	flags		format specificator attributes
+**	@param	total		pointer to printed chars counter
+**	@return	int			1 if found specificator. else 0
+*/
 int	ft_spec_switcher(const char *s, va_list args, t_flag *flags, size_t *total)
 {
 	if (*s == 's')
@@ -25,6 +34,14 @@ int	ft_spec_switcher(const char *s, va_list args, t_flag *flags, size_t *total)
 	return (0);
 }
 
+/*
+**	@brief	prints formated text by placeholder specification
+**	
+**	@param	s		point to format string
+**	@param	args	type for getting uncountable args
+**	@param	total	pointer to printed chars counter
+**	@return	int		lenght parsed string
+*/
 int	ft_print_by_spec(const char *s, va_list args, size_t *total)
 {
 	size_t	i;
@@ -36,11 +53,16 @@ int	ft_print_by_spec(const char *s, va_list args, size_t *total)
 		i++;
 	if (ft_spec_switcher(&s[i], args, &flags, total))
 		return (-1);
-	if (s[i] == 'l' && s[i + 1] == 'l')
-		i--;
 	return (i + 1);
 }
 
+/*
+**	@brief	A simple printf function
+**	
+**	@param	f		pointer to format string
+**	@param	...		variadic arguments
+**	@return	int		total printed chars
+*/
 int	ft_printf(const char *f, ...)
 {
 	va_list	args;

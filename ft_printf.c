@@ -1,17 +1,5 @@
 #include "ft_printf.h"
 
-int	ft_spec_switcher_part2(const char *s, va_list args, t_flag *flags, size_t *total)
-{
-	if (*s == 'l' && *(s + 1) != 'l')
-		*total += ft_print_nbr_base(flags, va_arg(args, int), "0123456789");
-	if (*s == 'l' && *(s + 1) == 'l')
-		*total += ft_print_nbr_base(flags,
-				va_arg(args, long long), "0123456789abcdef");
-	else
-		return (1);
-	return (0);
-}
-
 int	ft_spec_switcher(const char *s, va_list args, t_flag *flags, size_t *total)
 {
 	if (*s == 's')
@@ -21,20 +9,19 @@ int	ft_spec_switcher(const char *s, va_list args, t_flag *flags, size_t *total)
 	else if (*s == 'p')
 		*total += ft_print_addr(flags, va_arg(args, unsigned long long));
 	else if (*s == 'i' || *s == 'd')
-		*total += ft_print_nbr_base(flags, va_arg(args, int), "0123456789");
+		*total += ft_print_nbr(flags, va_arg(args, int), BASE10);
 	else if (*s == 'x')
-		*total += ft_print_nbr_base(flags,
-				va_arg(args, unsigned int), "0123456789abcdef");
+		*total += ft_print_nbr(flags, va_arg(args, unsigned int), BASE16L);
 	else if (*s == 'X')
-		*total += ft_print_nbr_base(flags,
-				va_arg(args, unsigned int), "0123456789ABCDEF");
+		*total += ft_print_nbr(flags, va_arg(args, unsigned int), BASE16U);
 	else if (*s == 'u')
-		*total += ft_print_nbr_base(flags,
-				va_arg(args, unsigned int), "0123456789");
+		*total += ft_print_nbr(flags, va_arg(args, unsigned int), BASE10);
 	else if (*s == '%')
 		*total += ft_print_char(flags, '%');
+	else if (*s == 'n')
+		*(unsigned long long *)va_arg(args, unsigned long long) = *total;
 	else
-		return (ft_spec_switcher_part2(s, args, flags, total));
+		return (1);
 	return (0);
 }
 

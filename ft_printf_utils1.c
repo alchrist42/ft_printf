@@ -41,7 +41,7 @@ int	ft_print_char(t_flag *flags, int ch)
 	return (total);
 }
 
-int	ft_print_nbr_base(t_flag *flags, long long n, char *base)
+int	ft_print_nbr(t_flag *flags, long long n, char *base)
 {
 	int		total;
 	int		len;

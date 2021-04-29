@@ -6,6 +6,10 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
+# define BASE10 "0123456789"
+# define BASE16L "0123456789abcdef"
+# define BASE16U "0123456789ABCDEF"
+
 typedef struct s_flag
 {
 	int		minus;
@@ -19,7 +23,7 @@ int			ft_printf(const char *f, ...);
 
 int			ft_print_string(t_flag *flags, char *str);
 int			ft_print_char(t_flag *flags, int ch);
-int			ft_print_nbr_base(t_flag *flags, long long n, char *base);
+int			ft_print_nbr(t_flag *flags, long long n, char *base);
 int			ft_print_addr(t_flag *flags, unsigned long long n);
 
 int			ft_putnchar(char c, int n);

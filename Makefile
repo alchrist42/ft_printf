@@ -2,7 +2,7 @@ NAME		=	libftprintf.a
 
 SRCS		= 	ft_printf.c			ft_printf_utils1.c		ft_printf_utils2.c
 
-HEADER		=	libftprintf.h
+HEADER		=	ft_printf.h
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
 # OBJS_B		=	$(patsubst %.c,%.o,$(SRCS_B))
@@ -22,7 +22,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS) $(HEADER)
 			@cd libft && MAKE
 			@cp libft/libft.a $(NAME)
-			$(LIBC) $(NAME) $(OBJS)
+			$(LIBC) $(NAME) $(OBJS) $?
 
 libft.a:   
 

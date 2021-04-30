@@ -24,6 +24,8 @@ $(NAME):	$(OBJS) $(HEADER)
 			@cp libft/libft.a $(NAME)
 			$(LIBC) $(NAME) $(OBJS) $?
 
+bonus:		$(NAME)
+
 libft.a:   
 
 clean:

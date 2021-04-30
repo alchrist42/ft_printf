@@ -28,7 +28,7 @@ int	ft_spec_switcher(const char *s, va_list args, t_flag *flags, size_t *total)
 	else if (*s == '%')
 		*total += ft_print_char(flags, '%');
 	else if (*s == 'n')
-		*(unsigned long long *)va_arg(args, unsigned long long) = *total;
+		*(va_arg(args, int *)) = *total;
 	else
 		return (1);
 	return (0);

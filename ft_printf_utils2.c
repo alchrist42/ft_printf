@@ -107,7 +107,7 @@ void	ft_get_flags(const char *s, va_list args, t_flag *flags)
 		}
 	}
 	else if (*s && ft_isdigit(*s))
-		flags->len = atoi(s);
+		flags->len = ft_atoi(s);
 	while (ft_isdigit(*s) || *s == '*')
 		s++;
 	if (*s++ == '.')
@@ -118,5 +118,4 @@ void	ft_get_flags(const char *s, va_list args, t_flag *flags)
 			flags->accuracy = ft_atoi(s);
 		flags->dot = (flags->accuracy >= 0);
 	}
-		
 }

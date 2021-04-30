@@ -5,7 +5,6 @@ SRCS		= 	ft_printf.c			ft_printf_utils1.c		ft_printf_utils2.c
 HEADER		=	ft_printf.h
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
-# OBJS_B		=	$(patsubst %.c,%.o,$(SRCS_B))
 
 
 CC			=	gcc

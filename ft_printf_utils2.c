@@ -112,11 +112,11 @@ void	ft_get_flags(const char *s, va_list args, t_flag *flags)
 		s++;
 	if (*s++ == '.')
 	{
-		flags->dot = true;
-		flags->accuracy = 0;
 		if (*s == '*')
 			flags->accuracy = va_arg(args, int);
 		else
-			flags->accuracy = atoi(s);
+			flags->accuracy = ft_atoi(s);
+		flags->dot = (flags->accuracy >= 0);
 	}
+		
 }
